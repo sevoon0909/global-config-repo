@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: javaServiceTreeFramework-BackendCore-AuthAnon
+          uri: http://127.0.0.1:31313
+          predicates:
+            - Path=/auth-anon/**
+          filters:
+            - RewritePath=/auth-anon/api/(?<path>.*), /anonymous/$\{path}
+            - name: BlockRequestGatewayFilter
+            - RemoveRequestHeader=Cookie
