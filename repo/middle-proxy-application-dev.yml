@@ -8,5 +8,4 @@ spring:
             - Path=/auth-anon/**
           filters:
             - RewritePath=/auth-anon/api/(?<path>.*), /anonymous/$\{path}
-            - name: BlockRequestGatewayFilter
             - RemoveRequestHeader=Cookie
